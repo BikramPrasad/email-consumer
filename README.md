@@ -34,6 +34,7 @@ aws configure
 Create a .env file in your project root:
 
 
+```
 MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/swiftdrop
 EMAIL_HOST=smtp.mailtrap.io
 EMAIL_PORT=2525
@@ -41,11 +42,10 @@ EMAIL_USER=your_smtp_user
 EMAIL_PASS=your_smtp_pass
 EMAIL_FROM=noreply@gmail.com
 Make sure these variables are loaded using serverless-dotenv-plugin in your serverless.yml
+```
 
 📦 Install Dependencies
 bash
-Copy
-Edit
 npm install
 
 🧪 Local Testing Setup
@@ -64,21 +64,23 @@ json
   ]
 }```
 
+
 2️⃣ Invoke the function locally:
 serverless invoke local -f consumeEmail --path event.json
-
 Or use:
 npm test
 You should see logs for email sent successfully and a MongoDB entry created.
 
 📡 Deploy to AWS
 bash
+```
 sls deploy
+```
 This will:
-
 Deploy the Lambda function
 Create required IAM roles
 Subscribe the function to the defined SNS Topic in serverless.yml
+
 
 🧪 Test on AWS (Post Deployment)
 ✅ Option 1: Manually publish a test SNS message
@@ -86,9 +88,10 @@ Subscribe the function to the defined SNS Topic in serverless.yml
 ```
 aws sns publish \
   --topic-arn arn:aws:sns:<your-region>:<account-id>:<your-topic-name> \
-  --message '{"username":"Alice","others":"bob@example.com","fileUrl":"https://s3.aws.com/file.pdf","fileSize":"4 MB","message":"Take a look!"}'```
+  --message '{"username":"Alice","others":"bob@example.com","fileUrl":"https://s3.aws.com/file.pdf","fileSize":"4 MB","message":"Take a look!"}'
+  ```
 
-  🧼 Cleanup
+🧼 Cleanup
 To remove all deployed AWS resources:
 ```
 sls remove
