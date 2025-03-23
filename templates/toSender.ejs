@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SwiftDrop - File Sent Confirmation</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f6f8;
+        margin: 0;
+        padding: 0;
+      }
+
+      .outer-box {
+        max-width: 700px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        border-radius: 16px;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+
+      .banner {
+        position: relative;
+        background-image: url('https://images.unsplash.com/photo-1557683304-673a23048d34?auto=format&fit=crop&w=800&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom right,
+          rgba(0, 0, 0, 0.45),
+          rgba(0, 0, 0, 0.65)
+        );
+        z-index: 1;
+      }
+
+      .banner-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.3
+        ); /* optional background for contrast */
+        padding: 10px 20px;
+        border-radius: 12px;
+      }
+
+      .banner-content img {
+        height: 52px;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+      }
+
+      .banner-title {
+        font-size: 40px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      .banner-subtitle {
+        position: relative;
+        z-index: 2;
+        margin-top: 10px;
+        font-size: 16px;
+        color: #f0f0f0;
+        font-style: italic;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+      }
+
+      .container {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        color: #333;
+        margin-top: -10px;
+      }
+
+      h2 {
+        color: #2a2a2a;
+        margin-top: 0;
+      }
+
+      .message {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f1f7ff;
+        border-left: 4px solid #007bff;
+        border-radius: 6px;
+        font-size: 15px;
+      }
+
+      .details {
+        margin: 20px 0;
+        font-size: 16px;
+      }
+
+      .btn-download {
+        display: inline-block;
+        padding: 14px 28px;
+        background-color: #007bff;
+        color: #fff !important;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-download:hover {
+        background-color: #0056b3;
+      }
+
+      .info {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #777;
+        text-align: center;
+      }
+
+      .footer-logo {
+        margin-top: 10px;
+      }
+
+      .footer-logo img {
+        height: 28px;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer-box">
+      <div class="banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+          <img
+            src="https://img.icons8.com/ios/50/share--v1.png"
+            alt="SwiftDrop Icon"
+          />
+          <div class="banner-title">SwiftDrop</div>
+        </div>
+
+        <div class="banner-subtitle">—Transfer with ease</div>
+      </div>
+
+      <div class="container">
+        <h2>Hello <%= username %> 👋</h2>
+
+        <p>
+          Your file has been successfully shared with
+          <strong><%= others %></strong> using <strong>SwiftDrop</strong>.
+        </p>
+
+        <% if (message) { %>
+        <div class="message">
+          <em>Your message:</em><br />
+          <%= message %>
+        </div>
+        <% } %>
+
+        <div class="details">
+          <p><strong>Total File Size:</strong> <%= fileSize %></p>
+        </div>
+
+        <a href="<%= fileUrl %>" class="btn-download" target="_blank"
+          >⬇ View Shared File</a
+        >
+        <div class="footer">
+          <p>Thanks for using SwiftDrop — Simple, Secure, Swift.</p>
+          <p>Good luck! Hope it works. 🙌</p>
+          <div class="footer-logo">
+            <img
+              src="https://img.icons8.com/ios-filled/50/share--v1.png"
+              alt="SwiftDrop Logo"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

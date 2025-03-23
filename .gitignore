@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+
+# Serverless Framework build artifacts
+.serverless/
+package-lock.json
+
+# Local environment variables
+.env
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Git-specific files
+*.orig
+
+# Coverage/testing
+coverage/
+.nyc_output/
+
+# EJS view cache (if any)
+views/*.ejs~

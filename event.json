@@ -1,0 +1,9 @@
+{
+  "Records": [
+    {
+      "Sns": {
+        "Message": "{\"from\":\"johndoe@gmail.com\",\"to\":[\"johdoe97@gmail.com\"],\"message\":\"Kube Sheet\",\"title\":\"Kubernetes sheet\",\"fileId\":\"ff3a54cc-3b6c-466d-818a-9155cb942641\"}"
+      }
+    }
+  ]
+}

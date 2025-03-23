@@ -1,0 +1,32 @@
+service: email-consumer
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  environment:
+    MONGODB_URI: ${env:MONGODB_URI}
+    SMTP_USER: ${env:SMTP_USER}
+    SMTP_PASS: ${env:SMTP_PASS}
+
+functions:
+  emailConsumer:
+    handler: handler.handler
+    events:
+      - sns:
+          arn: ${env:SNS_TOPIC_ARN}
+
+package:
+  exclude:
+    - .git/**
+    - .vscode/**
+    - event.json
+    - README.md
+  include:
+    - views/**
+    - public/**
+    - utils/**
+    - templates/**
+
+plugins:
+  - serverless-dotenv-plugin
